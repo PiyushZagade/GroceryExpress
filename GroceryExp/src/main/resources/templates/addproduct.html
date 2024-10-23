@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <script src="https://kit.fontawesome.com/1979f62d1e.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <h1><i class="fa-solid fa-paper-plane"></i>GroceryExpress</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a th:href="@{/admin/index}">Available</a></li>
+            <li><a th:href="@{/admin/mybook}">MyBook</a></li>
+            <li><a sec:authorize="isAuthenticated()" th:href="@{/logout}"><i class="fa-solid fa-sign-out-alt"></i>Logout</a></li>
+        </ul>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+    </nav>
+
+
+    <div class="container" sec:authorize="hasRole('Admin')">
+        <div class="align">
+            <div class="heading">
+                <h1>Add Product to <i class="fa-solid fa-paper-plane" style="color: white; margin-right: 5px;"></i><strong style="color: #E8810B;">GroceryExpress</strong></h1>
+            </div>
+            <form  th:object="${prod}"  enctype="multipart/form-data" method="post" th:action="@{/admin/processproduct}"  class="reg" >
+
+                <div th:if="${saved}" class="popup" >
+                    <h3 th:text="${saved}"></h3>
+                </div>
+                <div th:if="${err}" class="alert">
+                    <h3 th:text="${err}" ></h3>
+                </div>
+
+                <div class="box">
+                    <Label>Name</Label>
+                    <input class="ip " type="text" name="name" placeholder="Sprite" required>
+                    <!-- <p> <i class="fa-solid fa-circle-info"><span>name should be between 3-5 characters</span></i> </p> -->
+                    <!-- <p> <i class="fa-solid fa-circle-info"><span>name should be between 3-5 characters</span></i> </p> -->
+                </div>
+
+                <div class="box">
+                    <Label>Type</Label>
+                    <input class="ip " type="text" name="type" placeholder="Cold drink" required>
+                    <!-- <p> <i class="fa-solid fa-circle-info"><span>name should be between 3-5 characters</span></i> </p> -->
+                </div>
+                <div class="box">
+                    <Label>Weight</Label>
+                    <input class="ip " type="text" name="weight" placeholder="600ml" required>
+                    <!-- <p> <i class="fa-solid fa-circle-info"><span>name should be between 3-5 characters</span></i> </p> -->
+                </div>
+                
+                <div class="box">
+                    <Label>Enter Price</Label>
+                    <input class="ip" type="text" name="price" placeholder="90 Rs" required>
+                    <!-- <p> <i class="fa-solid fa-circle-info"><span>Please enter</span></i> </p> -->
+                </div>
+                <div class="box">
+                    <Label>Upload Image</Label>
+                    <input type="file" name="pimage" id="file" >
+                    <!-- <p> <i class="fa-solid fa-circle-info"><span>Please enter</span></i> </p> -->
+                </div>
+                <div class="b">
+                    <button type="submit">Add<i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </form>
+
+            
+        </div>
+    </div>
+
+    <div class="alert"  sec:authorize="!hasRole('Admin')">
+        <h3>You do not have permission to add products.</h3>
+    </div>
+
+    
+    <script th:src="@{/script.js}"></script>
+
+</body>
+
+</html>

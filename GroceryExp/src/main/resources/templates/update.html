@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Product</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <script src="https://kit.fontawesome.com/1979f62d1e.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <h1><i class="fa-solid fa-paper-plane"></i>GroceryExpress</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a th:href="@{/admin/index}">Available</a></li>
+            <li><a th:href="@{/admin/mybook}">MyBook</a></li>
+            <li><a sec:authorize="isAuthenticated()" th:href="@{/logout}"><i class="fa-solid fa-sign-out-alt"></i>Logout</a></li>
+        </ul>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+    </nav>
+
+
+
+    <div class="container">
+        <div class="align">
+            <div class="heading">
+                <h1>Update your Product Here!</h1>
+            </div>
+            <form th:object="${expro}" enctype="multipart/form-data" method="post" th:action="@{/admin/updatefo/{id}(id=${expro.id})}"
+                class="reg">
+                <input type="hidden" th:value="${expro.id}" >
+                <div class="box">
+                    <Label>Name</Label>
+                    <input class="ip " type="text" name="name" placeholder="Sprite" required th:value="${expro.name}">
+                </div>
+
+                <div class="box">
+                    <Label>Type</Label>
+                    <input class="ip " type="text" name="type" placeholder="Cold drink" required
+                        th:value="${expro.type}">
+
+                </div>
+                <div class="box">
+                    <Label>Weight</Label>
+                    <input class="ip " type="text" name="weight" placeholder="600 ml" required
+                        th:value="${expro.weight}">
+                </div>
+
+                <div class="box">
+                    <Label>Enter Price</Label>
+                    <input class="ip" type="text" name="price" placeholder="90 Rs" required th:value="${expro.price}">
+                </div>
+                <div class="box">
+                    <Label>Upload Image</Label>
+                    <div class="prev">
+                        <img  th:src="@{'/images/' + ${expro.image}}" >
+                    </div>
+                    <input type="file" name="pimage" id="file">
+                </div>
+                <div class="b">
+                    <button type="submit">Update<i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+
+    <script th:src="@{/script.js}"></script>
+
+</body>
+
+</html>
