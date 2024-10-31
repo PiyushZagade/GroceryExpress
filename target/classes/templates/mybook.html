@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyBook</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <script src="https://kit.fontawesome.com/1979f62d1e.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <h1><i class="fa-solid fa-paper-plane"></i>GroceryExpress</h1>
+        </div>
+        <ul class="nav-links">
+            <li sec:authorize="hasRole('Admin')"><a th:href="@{/admin/index}">Available</a></li>
+            <li sec:authorize="hasRole('User')"><a th:href="@{/user/index}">Available</a></li>
+            <li><a sec:authorize="hasRole('Admin')" th:href="@{/admin/addproduct}">AddProduct</a></li>
+            <li><a sec:authorize="isAuthenticated()" th:href="@{/logout}"><i class="fa-solid fa-sign-out-alt"></i>Logout</a></li>
+        </ul>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+    </nav>
+
+
+    <div class="tablecontainer">
+        <h1>Order Summary</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>weight</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="s : ${prods}">
+                    <td th:text="${s.name}"></td>
+                    <td th:text="${s.type}"></td>
+                    <td th:text="${s.weight}"></td>
+                    <td>
+                        <div class="quant">
+                            <form sec:authorize="hasRole('Admin')" th:action="@{/admin/decreaseQuantity/{id}(id=${s.id})}" method="post">
+                                <button type="submit">-</button>
+                            </form>
+                            <form sec:authorize="hasRole('User')" th:action="@{/user/decreaseQuantity/{id}(id=${s.id})}" method="post">
+                                <button type="submit">-</button>
+                            </form>
+                            <span th:text="${s.quantity}"></span>
+                            <form sec:authorize="hasRole('Admin')" th:action="@{/admin/increaseQuantity/{id}(id=${s.id})}" method="post">
+                                <button type="submit">+</button>
+                            </form>
+                            <form sec:authorize="hasRole('User')" th:action="@{/user/increaseQuantity/{id}(id=${s.id})}" method="post">
+                                <button type="submit">+</button>
+                            </form>
+                        </div>
+                    </td>
+                    <td th:text="${s.price}"></td>
+
+
+                    <td>
+                        <form sec:authorize="hasRole('Admin')" th:action="@{/admin/delmybook/{id}(id=${s.id})}" method="post">
+                            <button class="delbutton">Delete</button>
+                        </form>
+                        <form sec:authorize="hasRole('User')" th:action="@{/user/delmybook/{id}(id=${s.id})}" method="post">
+                            <button class="delbutton">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+
+
+            </tbody>
+        </table>
+
+        <div class="totalsection " th:if="${total > 0}">
+            <h2>Total Amount = <span th:text="'Rs '+${total}"></span></h2>
+        </div>
+        <div class="orderconfirm" th:if="${total > 0}">
+            <button type="submit" class="book" onclick="thankyou()">Confirm Order</button>
+        </div>
+    </div>
+
+    <div class="confirmcontainer" id="Confirmed">
+        <div class="confirmbox">
+            <i class="fa-solid fa-circle-check"></i>
+            <h2>Thank You for Your Order!</h2>
+            <h4>Dear <span th:text="${user.name}" style="color: black;"></span>,</h4>
+            <p><span>Your order has been placed successfully</span>, and our team is preparing it with care. We’ll
+                make sure it
+                reaches you on time, so you can enjoy a hassle-free shopping experience. </p>
+            <p> Thank you for shopping with
+                <strong style="color: #E8810B;">GroceryExpress!</strong> We truly appreciate your trust in us to
+                deliver fresh and
+                quality groceries right to your doorstep.
+            </p>
+            <p>If you have any questions or need assistance, feel free to reach out to our customer support team.
+                We’re here to help!</p>
+            <p>Happy shopping and stay healthy! </p>
+            <p> Sincerely, <br>
+                The GroceryExpress Team
+            </p>
+
+            <button class="btn" onclick="closeyou()">Ok</button>
+        </div>
+    </div>
+
+    <script th:src="@{/script.js}"></script>
+
+</body>
+
+</html>

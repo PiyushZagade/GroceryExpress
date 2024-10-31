@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin DashBoard</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <script src="https://kit.fontawesome.com/1979f62d1e.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <h1><i class="fa-solid fa-paper-plane"></i>GroceryExpress</h1>
+        </div>
+        <ul class="nav-links">
+            <li><span th:text="${op.name}" style="color: gold;"></span></li>
+            <li><a th:href="@{/}">Home</a></li>
+            <li sec:authorize="hasRole('Admin')">
+                <a th:href="@{/admin/mybook}">MyBook 
+                    <p id="mcount" class="count" th:if="${mcount > 0}" th:text="${mcount}"></p>
+                </a>
+            </li>
+            <li sec:authorize="hasRole('User')">
+                <a th:href="@{/user/mybook}">MyBook 
+                    <p id="mcount" class="count" th:if="${mcount > 0}" th:text="${mcount}"></p>
+                </a>
+            </li>
+            <li><a th:href="@{/admin/addproduct}"  sec:authorize="hasRole('Admin')">AddProduct</a></li>
+            <li><a sec:authorize="isAuthenticated()" th:href="@{/logout}"><i class="fa-solid fa-sign-out-alt"></i>Logout</a></li>
+        </ul>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+      </nav>
+
+    <section id="home">
+        <h1>Available Products</h1>
+        <div class="searchcon">
+            <h3 style="text-align: center;">Search Here</h3>
+            <input type="search" onkeyup="searchinput()" name="search" id="search" placeholder="Search here">
+            <!-- search  -->
+            <div class="Availsearchmsg">
+                <p></p>
+            </div>
+        </div>
+
+        <div class="productcontainer">
+
+            <div class="productbox" th:each="c: ${products}">
+                <div class="productimage">
+                    <img th:src="@{'/images/'+${c.image}}" alt="Product Image">
+                </div>
+
+                <div class="productdetails">
+                    <h3 th:text="${c.name}" style="color: #273B37;"></h3>
+                    <p th:text="${c.type}" class="type"></p>
+                    <p th:text="${c.weight}" class="weight"></p>
+                    <p th:text="${c.price}" class="bold"></p>
+                </div>
+
+                <div class="productactions">
+                    <form sec:authorize="hasRole('Admin')" th:action="@{/admin/updpro/{id}(id=${c.id})}" method="post">
+                        <button class="updbutton" type="submit"  >Update</button>
+                    </form>
+                    <form sec:authorize="hasRole('Admin')" th:action="@{/admin/addpro/{id}(id=${c.id})}" method="post">
+                        <button class="addbutton" type="submit" >ADD</button>
+                    </form>
+                    <form sec:authorize="hasRole('User')"th:action="@{/user/addpro/{id}(id=${c.id})}" method="post">
+                        <button class="addbutton" type="submit" >ADD</button>
+                    </form>
+                    <form sec:authorize="hasRole('Admin')" th:action="@{/admin/delpro/{id}(id=${c.id})}" method="post">
+                        <button class="delbutton" type="submit">Delete</button>
+                    </form>
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+
+
+    </section>
+
+
+    
+
+    <script th:src="@{/script.js}"></script>
+
+</body>
+
+</html>
