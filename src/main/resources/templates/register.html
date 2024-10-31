@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <script src="https://kit.fontawesome.com/1979f62d1e.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <h1><i class="fa-solid fa-paper-plane"></i>GroceryExpress</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/signin}"><i class="fa-solid fa-user"></i>Login</a></li>
+        </ul>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+    </nav>
+
+
+    <div class="container">
+        <div class="align">
+            <div class="heading">
+                <h1>Register Here!</h1>
+            </div>
+            <form class="reg"  th:action="@{/process}" method="post" th:object="${log}">
+
+                <div class="popup"  th:if="${message}">
+                    <h3  th:text="${message.content}"></h3>
+                </div>
+
+                <div class="box">
+                    <Label>Name </Label>
+                    <input class="ip " type="text" name="name" placeholder="Thomas Shelby" th:value="${log.name}" >
+                    <p th:each=" e: ${#fields.errors('name')}" > <i class="fa-solid fa-circle-info"><span th:text="${e}"></span></i> </p>
+                </div>
+                <div class="box">
+                    <Label>Email</Label>
+                    <input class="ip" type="email" name="email" placeholder="Thomas@gmail.com" th:value="${log.email}">
+                    <p th:each=" e: ${#fields.errors('email')}" > <i class="fa-solid fa-circle-info"><span th:text="${e}"></span></i> </p>
+                </div>
+                <div class="box">
+                    <Label>Phone Number</Label>
+                    <input class="ip " type="text" name="phoneno" placeholder="9876543210" th:value="${log.phoneno}">
+                    <p th:each=" e: ${#fields.errors('phoneno')}"> <i class="fa-solid fa-circle-info"><span th:text="${e}" ></span></i> </p>
+                </div>
+                <div class="box">
+                    <Label>Create Password</Label>
+                    <input class="ip" type="password" name="password" placeholder="Password" th:value="${log.password}">
+                    <p th:each=" e: ${#fields.errors('password')}"> <i class="fa-solid fa-circle-info"><span th:text="${e}"></span></i> </p>
+                </div>
+                <div class="box">
+                    <Label>Select Role</Label>
+                    <input class="role" type="radio" name="role" value="ROLE_Admin" > Admin
+                    <input class="role" type="radio" name="role" value="ROLE_User" >  User
+                    <p th:each=" e: ${#fields.errors('role')}" > <i class="fa-solid fa-circle-info"><span th:text="${e}"></span></i> </p>
+                </div>
+                <div class="box">
+                    <Label>Enter City</Label>
+                    <input class="ip" type="text" name="city" placeholder="Birmingham" th:value="${log.city}">
+                    <p th:each=" e: ${#fields.errors('city')}"> <i class="fa-solid fa-circle-info"><span  th:text="${e}"></span></i> </p>
+                </div>
+                <div class="b">
+                    <button type="submit">Register<i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+
+                <div class="al">
+                    <p>Already Registered? <a th:href="@{/signin}">login Here</a></p>
+                </div>
+            </form>
+
+            
+        </div>
+    </div>
+
+    <script th:src="@{/script.js}"></script>
+
+</body>
+
+</html>

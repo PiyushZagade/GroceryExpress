@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <script src="https://kit.fontawesome.com/1979f62d1e.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <h1><i class="fa-solid fa-paper-plane"></i>GroceryExpress</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/register}">Register</a></li>
+        </ul>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+    </nav>
+
+
+
+    <div class="container">
+        <div class="align">
+            <div class="heading">
+                <h1> <i class="fa-solid fa-user"></i> Login</h1>
+            </div>
+            <form id="inform"  th:action="@{/signin}" method="post">
+                <div class="alert" th:if="${param.error}" >
+                    <h2>Invalid Username or Password</h2>
+                </div>
+                <div class="popup" th:if="${param.logout}" >
+                    <h2>Logout Successful!</h2>
+                </div>
+                <div class="box">
+                    <Label>Username</Label>
+                    <input class="ip " type="text" name="username" placeholder="thomas@gmail.com">
+                </div>
+                
+                <div class="box">
+                    <Label>Password</Label>
+                    <input class="ip" type="password" name="password" placeholder="Password">
+                </div>
+                <div class="b">
+                    <button type="submit">Login<i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+                <div class="al">
+                    <p>Didn't Registered?<a th:href="@{/register}">Register Here</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script th:src="@{/script.js}"></script>
+</body>
+
+</html>
