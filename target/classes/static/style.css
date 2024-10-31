@@ -342,7 +342,7 @@ footer{
 .footercontainer{
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     margin: 10px auto;
 }
 .footersection{
@@ -489,7 +489,6 @@ footer{
 .messageme .cross i:hover {
     color: rgb(208, 43, 43); 
 }
-
 
 
 
@@ -724,118 +723,6 @@ tr:hover {
     transform: scale(1.2);
 }
 
-/* responsiveness  */
-/* Container for the products */
-.productcontainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-}
-
-/* Product box styling */
-.productbox {
-    border: 1px solid #ccc;
-    padding: 15px;
-    text-align: center;
-}
-
-/* Mobile-specific adjustments for screens below 600px width */
-@media only screen and (max-width: 600px) {
-    .productcontainer {
-        grid-template-columns: 0fr;
-    }
-
-   
-}
-
-@media (max-width: 768px) {
-    .nav-links {
-      display: none;
-      flex-direction: column;
-      position: absolute;
-      top: 60px;
-      right: 0;
-      background-color:#2B524B ;
-      width: 100%;
-      text-align: center;
-      color: white;
-    }
-  
-    .nav-links.active {
-      display: flex;
-    }
-  
-    .menu-icon {
-      display: block;
-      cursor: pointer;
-      font-size: 30px;
-      margin-right: 30px;
-    }
-  }
-  
-  /* Larger screens */
-  @media (min-width: 769px) {
-    .menu-icon {
-      display: none;
-      margin-right: 30px;
-    }
-  }
- 
-
-
-/* Mobile responsiveness */
-
-
-@media only screen and (max-width: 600px) {
-    .productimage img {
-        max-width: 70px;
-    }
-}
-/* General font and padding adjustments for mobile screens */
-@media only screen and (max-width: 600px) {
-    body {
-        font-size: 14px;
-    }
-
-    .box {
-        padding: 5px;
-    }
-
-    .b button {
-        padding: 8px;
-    }
-
-    h1, h3 {
-        font-size: 1.2rem;
-    }
-}
-
-@media (max-width: 768px) {
-    #search {
-        width: 80%; 
-        font-size: 0.9rem;
-    }
-    
-    .searchmsg, .Availsearchmsg {
-        left: 5%; 
-        top: 11rem;
-        width: 90%;
-    }
-}
-
-@media (max-width: 480px) {
-    #search {
-        width: 100%;
-        font-size: 0.8rem;
-    }
-    
-    .searchmsg, .Availsearchmsg {
-        top: 12rem;
-        left: 2%;
-        width: 96%;
-    }
-}
-
 /* search box  */
 
 #search{
@@ -847,7 +734,7 @@ tr:hover {
     border: 1px solid gray;
     outline: grey;
     color: black;
-    width: 25rem;
+    max-width: 25rem;
   }
 .searchcon h3 {
     display: inline;
@@ -860,11 +747,11 @@ tr:hover {
     position: absolute;
     display: block;
     top: 13.08rem;
-    left: 41%;
+    left: 47%;
     background-color: #2B524B;
     color: white;
     padding: 7px;
-    width: 23.5rem;
+    width: 12.5rem;
     border-radius: 3px;
     z-index: 1234;
     
@@ -878,11 +765,11 @@ tr:hover {
     position: absolute;
     display: block;
     top: 10.8rem;
-    left: 41%;
+    left: 47%;
     background-color: #2B524B;
     color: white;
     padding: 7px;
-    width: 23.5rem;
+    width: 12.5rem;
     border-radius: 3px;
     z-index: 1234;
   }
@@ -941,4 +828,319 @@ tr:hover {
     width: 200px;
     border-radius: 7px;
 
+}
+
+
+/* responsivness code  */
+/* Container for the products */
+.productcontainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+/* Product box styling */
+.productbox {
+    border: 1px solid #ccc;
+    padding: 15px;
+    text-align: center;
+}
+
+/* General responsive adjustments for smaller screens */
+@media only screen and (max-width: 768px) {
+    .container{
+        background-color: white;
+    }
+    .navbar {
+        width: 100%;
+        
+    }
+    .messageme {
+        width: 80%;
+        top: 50%;
+        padding: 0 10px;
+        
+    }
+
+    .messageme form {
+        min-width: auto;
+        width: 100%;
+        padding: 20px;
+        right: 15px;
+    
+    }
+    .messageme .ip{
+        max-width: 70%;
+    }
+
+    .messageme h1 {
+        font-size: 1.2rem;
+    }
+
+    .messageme .cross i {
+        font-size: 24px;
+        top: 15px;
+        right: 10px;
+    }
+
+    #message {
+        font-size: 0.9rem;
+    }
+}
+
+/* iPhone 14 and similar smaller screens */
+@media only screen and (max-width: 430px) {
+    .reg{
+        left: 41px;
+        width: 80%;
+    }
+    .messageme {
+        top: 50%;
+        width: 80%;
+    }
+
+    .messageme .ip{
+        max-width: 70%;
+    }
+
+    .messageme form {
+        padding: 10px;
+    }
+
+    .contcontainer textarea,
+    #message {
+        font-size: 0.8rem;
+    }
+
+    .messageme h1 {
+        font-size: 1.1rem;
+        margin: 0.5rem 0;
+    }
+
+    .messageme .cross i {
+        font-size: 20px;
+    }
+}
+
+/* Specific adjustments for 359px width screens */
+@media only screen and (max-width: 359px) {
+    
+    .tablecontainer{
+        width: 100vw;
+        
+    }
+    .reg{
+        left: 50px;
+        width: 80%;
+    }
+    .container{
+        width: 80%;
+        background-color: white;
+    }
+    .messageme {
+        top: 50%;
+        width: 80%;
+        padding: 0;
+    }
+
+    .messageme .ip{
+        max-width: 70%;
+    }
+
+    .messageme h1 {
+        font-size: 1rem;
+    }
+
+    .messageme form {
+        padding: 10px 5px;
+    }
+
+    .contcontainer textarea,
+    #message {
+        padding: 4px;
+        font-size: 0.8rem;
+    }
+
+    .messageme .cross i {
+        font-size: 18px;
+    }
+
+    .navbar {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .confirmcontainer .confirmbox {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+
+    .confirmcontainer h2, .confirmcontainer p, .confirmcontainer button {
+        font-size: 0.8rem;
+    }
+
+    .quant form button {
+        font-size: 0.7rem;
+    }
+}
+
+
+/* Mobile-specific adjustments for screens below 600px width */
+@media only screen and (max-width: 600px) {
+    .productcontainer {
+        grid-template-columns: 0fr;
+    }
+    .navbar {
+        width: 100%;
+    }
+    .container{
+        background-color: white;
+    }
+
+   
+}
+
+@media (max-width: 768px) {
+    .container{
+        background-color: white;
+    }
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background-color:#2B524B ;
+      width: 100%;
+      text-align: center;
+      color: white;
+    }
+  
+    .nav-links.active {
+      display: flex;
+    }
+  
+    .menu-icon {
+      display: block;
+      cursor: pointer;
+      font-size: 30px;
+      margin-right: 30px;
+    }
+    .navbar {
+        width: 100%;
+        padding: 1rem;
+    }
+  }
+  
+  /* Larger screens */
+  @media (min-width: 769px) {
+    .container{
+        background-color: white;
+    }
+    .menu-icon {
+      display: none;
+      margin-right: 30px;
+    }
+  }
+ 
+
+
+/* Mobile responsiveness */
+
+
+@media only screen and (max-width: 600px) {
+    .container{
+        background-color: white;
+    }
+    .productimage img {
+        max-width: 70px;
+    }
+    .navbar {
+        width: 100%;
+    }
+}
+/* General font and padding adjustments for mobile screens */
+@media only screen and (max-width: 600px) {
+    .container{
+        background-color: white;
+    }
+    body {
+        font-size: 14px;
+    }
+
+    .box {
+        padding: 5px;
+    }
+
+    .b button {
+        padding: 8px;
+    }
+
+    h1, h3 {
+        font-size: 1.2rem;
+    }
+    .navbar {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    #search {
+        width: 70%; 
+        font-size: 0.9rem;
+    }
+    
+    .searchmsg, .Availsearchmsg {
+        left: 5%; 
+        top: 11rem;
+        width: 70%;
+    }
+    .navbar {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    #inform{
+        width: 50%;
+    }
+    .reg{
+        margin-right: 30px;
+        width: 80%;
+    }
+    .align{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 70%;
+    }
+
+    .container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        
+        background-color: white;
+    }
+    .navbar {
+        width: 100%;
+        padding: 1rem;
+    }
+    #search {
+        width: 70%;
+        font-size: 0.8rem;
+    }
+    
+    .searchmsg{
+        top: 15.4rem;
+        left: 14%;
+        width: 70%;
+    }
+    .Availsearchmsg {
+        top: 12rem;
+        left: 14%;
+        width: 70%;
+    }
 }
