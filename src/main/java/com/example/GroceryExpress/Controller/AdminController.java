@@ -85,6 +85,8 @@ public class AdminController {
                                                                                               // to import autocomplete
                                                                                               // doesnt work
 
+            }else{
+                product.setImage("empty.jpg");
             }
 
             String username = principal.getName();

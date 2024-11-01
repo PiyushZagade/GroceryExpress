@@ -1038,9 +1038,6 @@ tr:hover {
     .container{
         background-color: white;
     }
-    .productimage img {
-        max-width: 70px;
-    }
     .navbar {
         width: 100%;
     }
