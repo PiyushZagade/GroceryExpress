@@ -26,11 +26,17 @@
     margin-bottom: 1rem;
     color: #273B37;
 }
-
+.align{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
 .reg{
     width: 90%;
-    min-width: 390px;
-    padding: 35px 30px 20px;
+    max-width: 400px;
+    padding:20px;
     border-radius: 5px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
     position: relative;
@@ -42,8 +48,8 @@
 /* login  */
 #inform{
     width: 90%;
-    min-width: 390px;
-    padding: 35px 30px 20px;
+    max-width: 400px;
+    padding: 20px;
     border-radius: 5px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
     position: relative;
@@ -63,14 +69,16 @@
     margin-top:1.5rem;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
 
 }
 
 .ip{
-    margin-left: 1.2rem ;
+    margin-left: 1rem ;
     font-size: 1rem;
-    padding-left: 7px;
-    width: 250px;
+
+    width: calc(100% - 6rem);
     border: 0;
     outline: 0;
     height: 2rem;
@@ -99,7 +107,7 @@
     cursor: pointer;
     background-color: #33747E;
     color: white;
-    width: 8rem;
+    width: 100% ;
     
 }
 .b button i{
@@ -113,8 +121,10 @@ p{
 p i{
     color: rgb(208, 43, 43);
     max-width: 210px;
+    font-size: 0.8rem;
 }
 i span{
+    font-size: 0.8rem;
     margin-left: 6px;
     font-weight: 500;
 }
@@ -848,12 +858,41 @@ tr:hover {
 
 /* General responsive adjustments for smaller screens */
 @media only screen and (max-width: 768px) {
+    .reg {
+        width: 85%;
+        padding: 10px;
+    }
+
+    .box, .ip, .b button {
+        font-size: 0.9rem;
+    }
     .container{
         background-color: white;
     }
     .navbar {
         width: 100%;
         
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #2B524B;
+        width: 100%;
+        text-align: center;
+        color: white;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-icon {
+        display: block;
+        cursor: pointer;
+        font-size: 30px;
+        margin-right: 30px;
     }
     .messageme {
         width: 80%;
@@ -889,10 +928,18 @@ tr:hover {
 }
 
 /* iPhone 14 and similar smaller screens */
-@media only screen and (max-width: 430px) {
-    .reg{
-        left: 41px;
-        width: 80%;
+@media only screen and (max-width: 480px) {
+    .reg {
+        width: 85%;
+        padding: 15px;
+    }
+
+    .heading h1 {
+        font-size: 1.4rem;
+    }
+
+    .ip {
+        width: calc(100% - 1.5rem);
     }
     .messageme {
         top: 50%;
@@ -922,67 +969,6 @@ tr:hover {
     }
 }
 
-/* Specific adjustments for 359px width screens */
-@media only screen and (max-width: 359px) {
-    
-    .tablecontainer{
-        width: 100vw;
-        
-    }
-    .reg{
-        left: 50px;
-        width: 80%;
-    }
-    .container{
-        width: 80%;
-        background-color: white;
-    }
-    .messageme {
-        top: 50%;
-        width: 80%;
-        padding: 0;
-    }
-
-    .messageme .ip{
-        max-width: 70%;
-    }
-
-    .messageme h1 {
-        font-size: 1rem;
-    }
-
-    .messageme form {
-        padding: 10px 5px;
-    }
-
-    .contcontainer textarea,
-    #message {
-        padding: 4px;
-        font-size: 0.8rem;
-    }
-
-    .messageme .cross i {
-        font-size: 18px;
-    }
-
-    .navbar {
-        width: 100%;
-        padding: 1rem;
-    }
-
-    .confirmcontainer .confirmbox {
-        font-size: 0.9rem;
-        padding: 0.5rem;
-    }
-
-    .confirmcontainer h2, .confirmcontainer p, .confirmcontainer button {
-        font-size: 0.8rem;
-    }
-
-    .quant form button {
-        font-size: 0.7rem;
-    }
-}
 
 
 /* Mobile-specific adjustments for screens below 600px width */
@@ -1091,8 +1077,8 @@ tr:hover {
     }
     
     .searchmsg, .Availsearchmsg {
-        left: 5%; 
-        top: 11rem;
+        left: 21%; 
+        top: 13rem;
         width: 70%;
     }
     .navbar {
@@ -1102,7 +1088,7 @@ tr:hover {
 
 @media (max-width: 480px) {
     #inform{
-        width: 50%;
+        width: 86%;
     }
     .reg{
         margin-right: 30px;
@@ -1113,7 +1099,7 @@ tr:hover {
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        width: 70%;
+        width: 80%;
     }
 
     .container{

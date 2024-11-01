@@ -44,23 +44,23 @@
                     <p th:each=" e: ${#fields.errors('email')}" > <i class="fa-solid fa-circle-info"><span th:text="${e}"></span></i> </p>
                 </div>
                 <div class="box">
-                    <Label>Phone Number</Label>
+                    <Label>Phone No.</Label>
                     <input class="ip " type="text" name="phoneno" placeholder="9876543210" th:value="${log.phoneno}">
                     <p th:each=" e: ${#fields.errors('phoneno')}"> <i class="fa-solid fa-circle-info"><span th:text="${e}" ></span></i> </p>
                 </div>
                 <div class="box">
-                    <Label>Create Password</Label>
+                    <Label>Password</Label>
                     <input class="ip" type="password" name="password" placeholder="Password" th:value="${log.password}">
                     <p th:each=" e: ${#fields.errors('password')}"> <i class="fa-solid fa-circle-info"><span th:text="${e}"></span></i> </p>
                 </div>
                 <div class="box">
-                    <Label>Select Role</Label>
+                    <Label>Role</Label>
                     <input class="role" type="radio" name="role" value="ROLE_Admin" > Admin
                     <input class="role" type="radio" name="role" value="ROLE_User" >  User
                     <p th:each=" e: ${#fields.errors('role')}" > <i class="fa-solid fa-circle-info"><span th:text="${e}"></span></i> </p>
                 </div>
                 <div class="box">
-                    <Label>Enter City</Label>
+                    <Label>City</Label>
                     <input class="ip" type="text" name="city" placeholder="Birmingham" th:value="${log.city}">
                     <p th:each=" e: ${#fields.errors('city')}"> <i class="fa-solid fa-circle-info"><span  th:text="${e}"></span></i> </p>
                 </div>
