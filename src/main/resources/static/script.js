@@ -40,8 +40,8 @@ function toggleMenu() {
         $(".searchmsg").hide();
         $(".Availsearchmsg").hide();
     } else {
-        // let url = `https://groceryexpress-ynxu.onrender.com/search/${query}`;
-        let url = `http://localhost:8181/search/${query}`;
+        let url = `https://groceryexpress-ynxu.onrender.com/search/${query}`;
+        // let url = `http://localhost:8181/search/${query}`;
         fetch(url)
             .then((response) => {
                 if (!response.ok) {
