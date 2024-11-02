@@ -856,18 +856,82 @@ tr:hover {
     text-align: center;
 }
 
-/* General responsive adjustments for smaller screens */
-@media only screen and (max-width: 768px) {
-    .reg {
+
+
+
+
+/* Mobile-specific adjustments for screens below 600px width */
+
+  
+  /* Larger screens */
+  @media (min-width: 769px) {
+    .container{
+        background-color: white;
+    }
+    .menu-icon {
+      display: none;
+      margin-right: 30px;
+    }
+  }
+ 
+
+
+/* Mobile responsiveness */
+
+
+/* General font and padding adjustments for mobile screens */
+@media only screen and (max-width: 600px) {
+    .productcontainer {
+        grid-template-columns: 0fr;
+    }
+    .navbar {
+        width: 100%;
+    }
+    .container{
+        background-color: white;
+    }
+    .navbar {
+        width: 100%;
+    }
+    body {
+        font-size: 14px;
+    }
+
+    .box {
+        padding: 5px;
+        display: block;
+    }
+    .box label{
+        padding: 3px;
+        color: black;
+        display: block;
+        text-align: center;
+    }
+
+    .b button {
+        padding: 8px;
+    }
+
+    h1, h3 {
+        font-size: 1.2rem;
+    }
+    .navbar {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    
+    .r label{
+        display: inline;
+    }
+    .reg , #inform{
         width: 85%;
         padding: 10px;
     }
 
     .box, .ip, .b button {
         font-size: 0.9rem;
-    }
-    .container{
-        background-color: white;
     }
     .navbar {
         width: 100%;
@@ -884,10 +948,6 @@ tr:hover {
         text-align: center;
         color: white;
     }
-    .nav-links.active {
-        display: flex;
-    }
-
     .menu-icon {
         display: block;
         cursor: pointer;
@@ -909,7 +969,7 @@ tr:hover {
     
     }
     .messageme .ip{
-        max-width: 70%;
+        max-width: 80%;
     }
 
     .messageme h1 {
@@ -925,149 +985,22 @@ tr:hover {
     #message {
         font-size: 0.9rem;
     }
-}
-
-/* iPhone 14 and similar smaller screens */
-@media only screen and (max-width: 480px) {
-    .reg {
-        width: 85%;
-        padding: 15px;
-    }
-
-    .heading h1 {
-        font-size: 1.4rem;
-    }
-
-    .ip {
-        width: calc(100% - 1.5rem);
-    }
-    .messageme {
-        top: 50%;
-        width: 80%;
-    }
-
-    .messageme .ip{
-        max-width: 70%;
-    }
-
-    .messageme form {
-        padding: 10px;
-    }
-
-    .contcontainer textarea,
-    #message {
-        font-size: 0.8rem;
-    }
-
-    .messageme h1 {
-        font-size: 1.1rem;
-        margin: 0.5rem 0;
-    }
-
-    .messageme .cross i {
-        font-size: 20px;
-    }
-}
-
-
-
-/* Mobile-specific adjustments for screens below 600px width */
-@media only screen and (max-width: 600px) {
-    .productcontainer {
-        grid-template-columns: 0fr;
-    }
-    .navbar {
-        width: 100%;
-    }
-    .container{
-        background-color: white;
-    }
-
-   
-}
-
-@media (max-width: 768px) {
-    .container{
-        background-color: white;
-    }
-    .nav-links {
-      display: none;
-      flex-direction: column;
-      position: absolute;
-      top: 60px;
-      right: 0;
-      background-color:#2B524B ;
-      width: 100%;
-      text-align: center;
-      color: white;
-    }
-  
-    .nav-links.active {
-      display: flex;
-    }
-  
-    .menu-icon {
-      display: block;
-      cursor: pointer;
-      font-size: 30px;
-      margin-right: 30px;
-    }
-    .navbar {
-        width: 100%;
-        padding: 1rem;
-    }
-  }
-  
-  /* Larger screens */
-  @media (min-width: 769px) {
-    .container{
-        background-color: white;
-    }
-    .menu-icon {
-      display: none;
-      margin-right: 30px;
-    }
-  }
- 
-
-
-/* Mobile responsiveness */
-
-
-@media only screen and (max-width: 600px) {
-    .container{
-        background-color: white;
-    }
-    .navbar {
-        width: 100%;
-    }
-}
-/* General font and padding adjustments for mobile screens */
-@media only screen and (max-width: 600px) {
-    .container{
-        background-color: white;
-    }
-    body {
-        font-size: 14px;
-    }
-
-    .box {
-        padding: 5px;
-    }
-
-    .b button {
-        padding: 8px;
-    }
-
-    h1, h3 {
-        font-size: 1.2rem;
-    }
-    .navbar {
-        width: 100%;
-    }
-}
-
-@media (max-width: 768px) {
+    
+      .nav-links.active {
+        display: flex;
+        padding-bottom: 1rem;
+      }
+    
+      .menu-icon {
+        display: block;
+        cursor: pointer;
+        font-size: 30px;
+        margin-right: 30px;
+      }
+      .navbar {
+          width: 100%;
+          padding: 1rem;
+      }
     #search {
         width: 70%; 
         font-size: 0.9rem;
@@ -1084,19 +1017,60 @@ tr:hover {
 }
 
 @media (max-width: 480px) {
-    #inform{
-        width: 86%;
+    .tablecontainer{
+        width: 90%;
     }
-    .reg{
-        margin-right: 30px;
+    th{
+        padding: 1px;
+    }
+    .alert h2 , .popup h2{
+        font-size: 1rem;
+    }
+    .reg {
+        width: 85%;
+        padding: 15px;
+    }
+
+    .heading h1 {
+        font-size: 1.4rem;
+    }
+
+    .ip {
+        width: calc(100% - 3rem);
+    }
+    .messageme {
+        top: 50%;
         width: 80%;
     }
+
+    .messageme form {
+        padding: 10px;
+    }
+
+    .contcontainer textarea,
+    #message {
+        font-size: 0.8rem;
+        width: 90%;
+    }
+    .contcontainer textarea{
+        border: 1px solid black;
+    }
+
+    .messageme h1 {
+        font-size: 1.1rem;
+        margin: 0.5rem 0;
+    }
+
+    .messageme .cross i {
+        font-size: 20px;
+    }
     .align{
+        margin-top: 25%;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        width: 80%;
+        width: 90%;
     }
 
     .container{
@@ -1109,7 +1083,7 @@ tr:hover {
     }
     .navbar {
         width: 100%;
-        padding: 1rem;
+        padding: 12px;
     }
     #search {
         width: 70%;
@@ -1120,6 +1094,9 @@ tr:hover {
         top: 15.4rem;
         left: 14%;
         width: 70%;
+    }
+    .searchmsg p , .Availsearchmsg p{
+        padding: 3px;
     }
     .Availsearchmsg {
         top: 12rem;

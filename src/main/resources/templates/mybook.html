@@ -79,6 +79,9 @@
         <div class="totalsection " th:if="${total > 0}">
             <h2>Total Amount = <span th:text="'Rs '+${total}"></span></h2>
         </div>
+        <div class="totalsection " th:unless="${total}">
+            <h2>Please Add Product</h2>
+        </div>
         <div class="orderconfirm" th:if="${total > 0}">
             <button type="submit" class="book" onclick="thankyou()">Confirm Order</button>
         </div>
