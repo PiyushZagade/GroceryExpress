@@ -23,7 +23,7 @@ import com.example.GroceryExpress.Repository.Productrepo;
 import com.example.GroceryExpress.Services.ProListService;
 import com.example.GroceryExpress.Services.Prodservice;
 import com.example.GroceryExpress.helper.Message;
-import com.example.GroceryExpress.Services.service;
+import com.example.GroceryExpress.Services.userservice;
 
 
 import jakarta.validation.Valid;
@@ -34,7 +34,7 @@ import jakarta.validation.Valid;
 public class Control {
 
     @Autowired
-    service service;
+    userservice service;
 
     @Autowired
     Productrepo productrepo;
@@ -81,6 +81,13 @@ public class Control {
 
         if (result.hasErrors()) {
             return "register";
+        }
+        if (service.isEmailRegistered(user.getEmail())) {
+            redirectAttributes.addFlashAttribute("message", new Message("Email is already registered", "err"));
+            return "redirect:/register";
+        }else if (service.isPhonenoRegistered(user.getPhoneno())) {
+            redirectAttributes.addFlashAttribute("message", new Message("Phone no. is already registered", "err"));
+            return "redirect:/register";
         }
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));

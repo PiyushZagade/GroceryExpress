@@ -29,28 +29,36 @@
             </div>
             <form class="reg"  th:action="@{/process}" method="post" th:object="${log}">
 
-                <div class="popup"  th:if="${message}">
-                    <h3  th:text="${message.content}"></h3>
+                <div class="popup" th:if="${message != null and message.type == 'succ'}">
+                    <h3 th:text="${message.content}"></h3>
                 </div>
+                <div class="alert" th:if="${message != null and message.type == 'err'}">
+                    <h3 th:text="${message.content}"></h3>
+                </div>
+                
 
                 <div class="box">
                     <Label>Name </Label>
-                    <input class="ip " type="text" name="name" placeholder="Thomas Shelby" th:value="${log.name}" >
+                    <input class="ip " type="text" name="name" onkeyup="namecheck()" id="name" placeholder="Thomas Shelby" th:value="${log.name}" >
+                    <p id="nameerr"></p>
                     <p th:each=" e: ${#fields.errors('name')}" > <i class="fa-solid fa-circle-info"><span th:text="${e}"></span></i> </p>
                 </div>
                 <div class="box">
                     <Label>Email</Label>
-                    <input class="ip" type="email" name="email" placeholder="Thomas@gmail.com" th:value="${log.email}">
+                    <input class="ip" type="email" name="email" id="email" onkeyup="emailcheck()" placeholder="Thomas@gmail.com" th:value="${log.email}">
+                    <p id="emailerr"></p>
                     <p th:each=" e: ${#fields.errors('email')}" > <i class="fa-solid fa-circle-info"><span th:text="${e}"></span></i> </p>
                 </div>
                 <div class="box">
                     <Label>Phone No.</Label>
-                    <input class="ip " type="text" name="phoneno" placeholder="9876543210" th:value="${log.phoneno}">
+                    <input class="ip " type="text" name="phoneno" onkeyup="phonecheck()" id="phoneno" placeholder="9876543210" th:value="${log.phoneno}">
+                    <p id="phoneerr"></p>
                     <p th:each=" e: ${#fields.errors('phoneno')}"> <i class="fa-solid fa-circle-info"><span th:text="${e}" ></span></i> </p>
                 </div>
                 <div class="box">
                     <Label>Password</Label>
-                    <input class="ip" type="password" name="password" placeholder="Password" th:value="${log.password}">
+                    <input class="ip" type="password" name="password" placeholder="Password" onkeyup="passcheck()" id="password" th:value="${log.password}">
+                    <p id="passerr"></p>
                     <p th:each=" e: ${#fields.errors('password')}"> <i class="fa-solid fa-circle-info"><span th:text="${e}"></span></i> </p>
                 </div>
                 <div class="box r">
@@ -61,7 +69,8 @@
                 </div>
                 <div class="box">
                     <Label>City</Label>
-                    <input class="ip" type="text" name="city" placeholder="Birmingham" th:value="${log.city}">
+                    <input class="ip" type="text" name="city" onkeyup="citycheck()" placeholder="Birmingham" th:value="${log.city}" id="city">
+                    <p id="cityerr"></p>
                     <p th:each=" e: ${#fields.errors('city')}"> <i class="fa-solid fa-circle-info"><span  th:text="${e}"></span></i> </p>
                 </div>
                 <div class="b">

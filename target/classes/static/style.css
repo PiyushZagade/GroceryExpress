@@ -35,7 +35,7 @@
 }
 .reg{
     width: 90%;
-    max-width: 400px;
+    max-width: 90%;
     padding:20px;
     border-radius: 5px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
@@ -48,7 +48,7 @@
 /* login  */
 #inform{
     width: 90%;
-    max-width: 400px;
+    max-width: 90%;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
@@ -127,6 +127,9 @@ i span{
     font-size: 0.8rem;
     margin-left: 6px;
     font-weight: 500;
+}
+.jserr{
+    font-size: 13px;
 }
 ::placeholder{
     color: #273B37;
@@ -1071,6 +1074,7 @@ tr:hover {
         justify-content: center;
         flex-direction: column;
         width: 90%;
+        margin-bottom: 20%;
     }
 
     .container{
